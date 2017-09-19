@@ -20,14 +20,14 @@
     "matches": [
       "https://www.google.co.in/maps/*",
 
-      //Mapillary https://www.mapillary.com/app/?lat=-13.16381&lng=-74.22313&z=19&focus=map
+      //Mapillary https://www.mapillary.com/app/?lat=-13.16381&lng=-74.22313&z=19&focus=map //done
       "https://www.mapillary.com/app/*", //done
 
       //OpenstreetMap https://www.openstreetmap.org/#map=19/-12.94748/26.07685 //done
       //iD "http://www.openstreetmap.org/edit?editor=id#*", , 
       "https://www.openstreetmap.org/*",
 
-      //Router demo server link: http://map.project-osrm.org/?z=13&center=38.899450%2C-77.026949&hl=en&alt=0
+      //Router demo server link: http://map.project-osrm.org/?z=17&center=38.894290%2C-77.035151
       "http://map.project-osrm.org/*",
 
       //Router debug map link: http://map.project-osrm.org/debug/#13/37.7960/-122.4536 //done

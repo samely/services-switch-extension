@@ -27,9 +27,6 @@ function switchService(service) {
     var zoom;
     var coords;
 
-    console.log(urlService);
-
-
     //Get coordinates and zoom
     if (urlService.length != 0) {
 
@@ -43,7 +40,6 @@ function switchService(service) {
         if (urlService.indexOf("mapillary") !== -1) {
             coords = urlService.replace("https://www.mapillary.com/app/?", "").split("&");
             for (var i = 0; i < coords.length; i++) {
-                console.log(coords[i] + i);
                 if (coords[i].indexOf("lat=") !== -1) {
                     lat = coords[i].replace("lat=", "");
                 }
@@ -55,8 +51,20 @@ function switchService(service) {
                 }
             }
         }
+        if (urlService.indexOf("map.project-osrm.org") !== -1 && urlService.indexOf("debug") == -1) {
+            coords = urlService.replace("http://map.project-osrm.org/?", "").split("&");
+            zoom = coords[0].replace("z=", "");
+            var center = coords[1].replace("center=", "");
+            if (center.indexOf("%2C") == -1) {
+                lat = center.split("%2C")[0];
+                long = center.split("%2C")[1];
+            } else if (center.indexOf(",") == -1) {
+                lat = center.split(",")[0];
+                long = center.split(",")[1];
+            }
+        }
 
-        if (urlService.indexOf("openstreetmap") !== -1 || urlService.indexOf("routerdebugmap") !== -1 || urlService.indexOf("binnacle") !== -1 || urlService.indexOf("getdirections") !== -1) {
+        if (urlService.indexOf("openstreetmap") !== -1 || (urlService.indexOf("map.project-osrm.org") !== -1 && urlService.indexOf("debug") !== -1) || urlService.indexOf("binnacle") !== -1 || urlService.indexOf("get-directions") !== -1) {
             if (urlService.indexOf("openstreetmap") !== -1) {
                 coords = urlService.replace("https://www.openstreetmap.org/#map=", "").split("/")
             } else {
@@ -71,11 +79,14 @@ function switchService(service) {
 }
 
 function openService(service, lat, long, zoom) {
-   if (service == "google") {
+    if (service == "google") {
         newUrl = "https://www.google.com/maps/@" + lat + "," + long + "," + zoom + "z";
     }
     if (service == "mapillary") {
         newUrl = "https://www.mapillary.com/app/?lat=" + lat + "&lng=" + long + "&z=" + zoom;
+    }
+    if (service == "routerdemoserver") {
+        newUrl = "http://map.project-osrm.org/?z=" + zoom + "&center=" + lat + "," + long;
     }
     if (service == "openstreetmap") {
         newUrl = "https://www.openstreetmap.org/#map=" + zoom + "/" + lat + "/" + long;
