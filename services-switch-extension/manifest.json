@@ -1,0 +1,51 @@
+{
+  "name": "Services Switch extension",
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "homepage_url": "https://github.com/mapbox/",
+  "description": "This allow jumping between services",
+  "icons": {
+    "16": "img/16.png",
+    "48": "img/48.png",
+    "128": "img/128.png"
+  },
+  "author": "Mapbox",
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "img/48.png"
+  },
+
+  "permissions": ["tabs", "activeTab"],
+  "content_scripts": [{
+    "matches": [
+      "https://www.google.co.in/maps/*",
+
+      //Mapillary https://www.mapillary.com/app/?lat=-13.16381&lng=-74.22313&z=19&focus=map
+      "https://www.mapillary.com/app/*", //done
+
+      //OpenstreetMap https://www.openstreetmap.org/#map=19/-12.94748/26.07685 //done
+      //iD "http://www.openstreetmap.org/edit?editor=id#*", , 
+      "https://www.openstreetmap.org/*",
+
+      //Router demo server link: http://map.project-osrm.org/?z=13&center=38.899450%2C-77.026949&hl=en&alt=0
+      "http://map.project-osrm.org/*",
+
+      //Router debug map link: http://map.project-osrm.org/debug/#13/37.7960/-122.4536 //done
+      "http://map.project-osrm.org/debug/*",
+
+      //Binnacle link: https://hey.mapbox.com/binnacle/#10.9/38.9324/-77.0151/0.0/ //done
+      "https://hey.mapbox.com/binnacle/*",
+
+      //get - directions link: https://www.mapbox.com/get-directions/#2.84/31.28/4.8 // done
+      "https://www.mapbox.com/get-directions/*"
+
+      //directions - debug link
+      //directions - compare link
+      //overpass
+
+    ],
+    "js": [
+      "js/services-switch.js"
+    ]
+  }]
+}
