@@ -29,7 +29,6 @@ function switchService(service) {
 
     //Get coordinates and zoom
     if (urlService.length != 0) {
-
         if (urlService.indexOf("google") !== -1) {
             coords = urlService.split("maps")[1].split(",");
             lat = coords[0].replace("/@", "");
@@ -64,6 +63,15 @@ function switchService(service) {
             }
         }
 
+        if (urlService.indexOf("directions-compare") !== -1) {
+            coords = urlService.replace("https://hey.mapbox.com/directions-compare/#?", "").split("&");
+            zoom = coords[1].replace("zoom=", "");
+            var center = coords[0].replace("center=", "").split(",");
+            lat = center[1];
+            long = center[0];
+
+        }
+
         if (urlService.indexOf("openstreetmap") !== -1 || (urlService.indexOf("map.project-osrm.org") !== -1 && urlService.indexOf("debug") !== -1) || urlService.indexOf("binnacle") !== -1 || urlService.indexOf("get-directions") !== -1) {
             if (urlService.indexOf("openstreetmap") !== -1) {
                 coords = urlService.replace("https://www.openstreetmap.org/#map=", "").split("/")
@@ -85,13 +93,13 @@ function openService(service, lat, long, zoom) {
     if (service == "mapillary") {
         newUrl = "https://www.mapillary.com/app/?lat=" + lat + "&lng=" + long + "&z=" + zoom;
     }
-    if (service == "routerdemoserver") {
+    if (service == "routerdemo") {
         newUrl = "http://map.project-osrm.org/?z=" + zoom + "&center=" + lat + "," + long;
     }
     if (service == "openstreetmap") {
         newUrl = "https://www.openstreetmap.org/#map=" + zoom + "/" + lat + "/" + long;
     }
-    if (service == "routerdebugmap") {
+    if (service == "routerdebug") {
         newUrl = "http://map.project-osrm.org/debug/#" + zoom + "/" + lat + "/" + long;
     }
     if (service == "binnacle") {
@@ -100,6 +108,10 @@ function openService(service, lat, long, zoom) {
     if (service == "getdirections") {
         newUrl = "https://www.mapbox.com/get-directions/#" + zoom + "/" + lat + "/" + long;
     }
+    if (service == "directionscompare") {
+        newUrl = "https://hey.mapbox.com/directions-compare/#?center=" + long + "," + lat + "&zoom=" + zoom;
+    }
+
 
     console.log(newUrl);
     window.open(newUrl, '_blank');

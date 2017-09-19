@@ -18,7 +18,7 @@
   "permissions": ["tabs", "activeTab"],
   "content_scripts": [{
     "matches": [
-      "https://www.google.co.in/maps/*",
+      "https://www.google.co.in/maps/*", //done
 
       //Mapillary https://www.mapillary.com/app/?lat=-13.16381&lng=-74.22313&z=19&focus=map //done
       "https://www.mapillary.com/app/*", //done
@@ -27,20 +27,23 @@
       //iD "http://www.openstreetmap.org/edit?editor=id#*", , 
       "https://www.openstreetmap.org/*",
 
-      //Router demo server link: http://map.project-osrm.org/?z=17&center=38.894290%2C-77.035151
+      //Router demo server link: http://map.project-osrm.org/?z=17&center=38.894290%2C-77.035151 //done
       "http://map.project-osrm.org/*",
 
       //Router debug map link: http://map.project-osrm.org/debug/#13/37.7960/-122.4536 //done
       "http://map.project-osrm.org/debug/*",
 
-      //Binnacle link: https://hey.mapbox.com/binnacle/#10.9/38.9324/-77.0151/0.0/ //done
+      //Binnacle link: https://hey.mapbox.com/binnacle/#10.9/38.9324/-77.0151/0.0/ 
       "https://hey.mapbox.com/binnacle/*",
 
       //get - directions link: https://www.mapbox.com/get-directions/#2.84/31.28/4.8 // done
-      "https://www.mapbox.com/get-directions/*"
+      "https://www.mapbox.com/get-directions/*",
 
-      //directions - debug link
-      //directions - compare link
+      //directions - debug link: https://hey.mapbox.com/directions-debug/
+      "https://hey.mapbox.com/directions-debug/*",
+
+      //directions - compare link: https://hey.mapbox.com/directions-compare/#?center=-122.4089,37.7769&zoom=12 //done
+      "https://hey.mapbox.com/directions-compare/*"
       //overpass
 
     ],
